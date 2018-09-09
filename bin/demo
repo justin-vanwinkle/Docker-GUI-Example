@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+# Run the container and remove it after its main process has stopped.
+CMD="docker run --rm";
+
+# Make the container run in the background.
+CMD="$CMD -d";
+
+# The container is interactive but does not always need to get a pseudo tty.
+[[ -t 1 ]] && TTY="-i" || TTY="-it"; CMD="$CMD $TTY";
+
+# Run this container as the invoking user from the host system.
+CMD="$CMD -e HOST_USER_ID=`id -u` -e HOST_GROUP_ID=`id -g` -v $HOME:/home/user";
+
+# Set current working directory inside container to match current working directory on host.
+# This has a restriction of being inside the /home directory.
+pwd=`pwd`; CMD="$CMD -w ${pwd/$USER/user}";
+
+# Mount the host X11 socket into the container.
+CMD="$CMD -v /tmp/.X11-unix/:/tmp/.X11-unix/ -e DISPLAY";
+
+# Give the container direct access to the hosts shared memory.
+# I believe this makes things just run more efficently.
+CMD="$CMD -v /dev/shm:/dev/shm";
+
+# Use the host's network stack.
+CMD="$CMD --net host";
+
+# Run the approriate tagged container.
+CMD="$CMD demo:latest";
+
+# Proxy additional arguments.
+CMD="$CMD $@";
+
+# Execute.
+$CMD;

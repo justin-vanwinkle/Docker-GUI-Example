@@ -1,0 +1,9 @@
+.git
+.gitignore
+.gitattributes
+.travis.yml
+Dockerfile.dev-base
+LICENSE
+README.md
+bin
+tasks

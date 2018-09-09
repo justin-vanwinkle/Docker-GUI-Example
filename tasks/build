@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+self=$(readlink -f $0); tasks=`dirname ${self}`; projectRoot=`dirname ${tasks}`;
+docker build -t justinvanwinkle/xforward-demo:latest -t justinvanwinkle/xforward-demo:`date +%Y%m%d` -f Dockerfile $projectRoot;
+
+
+

@@ -1,0 +1,16 @@
+sudo: required
+
+services:
+    - docker
+
+before_install:
+    - sudo apt-get -qq update
+    - sudo apt-get install -y jq
+
+script: ./tasks/build
+
+after_success:
+    - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+    - wget https://github.com/aktau/github-release/releases/download/v0.7.2/linux-amd64-github-release.tar.bz2
+    - tar -jxvf linux-amd64-github-release.tar.bz2
+    - ./tasks/publish

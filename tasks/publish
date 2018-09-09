@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+self=$(readlink -f $0); tasks=`dirname ${self}`; projectRoot=`dirname ${tasks}`;
+
+GID=`id -g`; NEW_TAG=`date +%Y%m%d`;
+
+# Push the image to docker hub
+docker push justinvanwinkle/xforward-demo;
+
+# Push a new tag for the current day
+git config --global user.email "vanwinkle.justin@gmail.com"
+git config --global user.name "Justin VanWinkle"
+git checkout master
+git tag $NEW_TAG
+git push https://$GITHUB_TOKEN@github.com/justin-vanwinkle/Docker-XForward-Example.git master --tags
+
+# Create a new release
+echo "$NEW_RELEASE_NOTES" | ./bin/linux/amd64/github-release release \
+    --user justin-vanwinkle \
+    --repo Docker-XForward-Example \
+    --tag $NEW_TAG \
+    --description -
+
+# Replace the ":latest" tag in the pseudo binary scripts with the new release.
+sed -i "s/:latest/:$NEW_TAG/g" ./bin/demo
+
+# Upload the pseudo binary scripts to the release.
+./bin/linux/amd64/github-release upload \
+    --user justin-vanwinkle \
+    --repo Docker-XForward-Example \
+    --tag `date +%Y%m%d` \
+    --name "demo.sh" \
+    --file ./bin/demo
