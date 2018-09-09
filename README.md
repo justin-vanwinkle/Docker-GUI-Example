@@ -3,7 +3,8 @@
 [![Build Status](https://travis-ci.org/justin-vanwinkle/Docker-XForward-Example.svg?branch=master)](https://travis-ci.org/justin-vanwinkle/Docker-XForward-Example)
 
 * If you want to try it out, run `bin/demo xeyes`.
-* Everything in the tasks folder is used for my build and release pipeline with Travis CI.
+* The `tasks` folder is used for my build and release pipeline with Travis CI.
+* The `bin` folder contains a script that spins up a docker container and proxys additional commands to the container.
 * The most relevant files for X forwasding are `Dockerfile`, `entrypoint.sh`, and `bin/demo`.
 
 ## Known Issue
