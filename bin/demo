@@ -27,7 +27,7 @@ CMD="$CMD -v /dev/shm:/dev/shm";
 CMD="$CMD --net host";
 
 # Run the approriate tagged container.
-CMD="$CMD demo:latest";
+CMD="$CMD justinvanwinkle/xforward-demo:latest";
 
 # Proxy additional arguments.
 CMD="$CMD $@";
