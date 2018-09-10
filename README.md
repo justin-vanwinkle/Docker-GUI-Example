@@ -7,6 +7,6 @@
 * The `bin` folder contains a script that spins up a docker container and proxys additional commands to the container.
 * The most relevant files for X forwasding are `Dockerfile`, `entrypoint.sh`, and `bin/demo`.
 
-## Known Issue
+## Known Limitations
 
 * Your working directory must be inside the host user's home directory.  Running outside in a directory higher than that will result in failure.
