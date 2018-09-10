@@ -2,7 +2,7 @@
 .gitignore
 .gitattributes
 .travis.yml
-Dockerfile.dev-base
+Dockerfile
 LICENSE
 README.md
 bin
