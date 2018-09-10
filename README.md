@@ -1,6 +1,6 @@
 # GUI Apps in Docker
 
-[![Build Status](https://travis-ci.org/justin-vanwinkle/Docker-XForward-Example.svg?branch=master)](https://travis-ci.org/justin-vanwinkle/Docker-XForward-Example)
+[![Build Status](https://travis-ci.org/justin-vanwinkle/Docker-GUI-Example.svg?branch=master)](https://travis-ci.org/justin-vanwinkle/Docker-GUI-Example)
 
 A very simple example of how to run GUI apps in Docker using X forwarding.
 
