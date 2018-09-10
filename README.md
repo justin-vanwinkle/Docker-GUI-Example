@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/justin-vanwinkle/Docker-GUI-Example.svg?branch=master)](https://travis-ci.org/justin-vanwinkle/Docker-GUI-Example)
 
-A very simple example of how to run GUI apps in Docker using X forwarding.
+An example of how to run GUI apps in Docker using X forwarding.
 
 ![XEyes Demo](./xeyes-demo.gif)
 
